@@ -1,0 +1,32 @@
+-- Basic setup for sg.nvim
+local sg_ok, sg = pcall(require, 'sg')
+if not sg_ok then
+  vim.notify('sg.nvim not found', vim.log.levels.WARN)
+  return
+end
+
+sg.setup({
+  -- Add any specific configuration here
+})
+
+-- Add Cody to nvim-cmp if it exists
+local cmp_ok, cmp = pcall(require, 'cmp')
+if cmp_ok then
+  local current_sources = cmp.get_config().sources or {}
+  
+  -- Check if cody source is already added
+  local cody_exists = false
+  for _, source in ipairs(current_sources) do
+    if source.name == 'cody' then
+      cody_exists = true
+      break
+    end
+  end
+  
+  if not cody_exists then
+    table.insert(current_sources, { name = 'cody' })
+    cmp.setup({ sources = current_sources })
+  end
+else
+  vim.notify('nvim-cmp not found, Cody completion will not be integrated', vim.log.levels.INFO)
+end
