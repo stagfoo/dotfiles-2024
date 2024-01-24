@@ -32,6 +32,14 @@ return require('packer').startup(function(use)
  use  ('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
  use 'ThePrimeagen/harpoon'
  use 'mbbill/undotree'
+ use('neovim/nvim-lspconfig')
+ use('jose-elias-alvarez/null-ls.nvim')
+ use {
+    'akinsho/flutter-tools.nvim',
+    requires = {
+        'nvim-lua/plenary.nvim',
+    },
+}
  use {
   'VonHeikemen/lsp-zero.nvim',
   branch = 'v3.x',
