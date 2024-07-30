@@ -24,13 +24,25 @@ vim.g.rzipPlugin_extra_ext = '*.odt,*.mfh'
 
 -- Plugin Manager
 vim.cmd [[packadd packer.nvim]]
+vim.cmd("colorscheme rose-pine")
 
 return require('packer').startup(function(use)
 -- Packer can manage itself
+ use 'rose-pine/neovim'
  use 'wbthomason/packer.nvim'
+ use 'lbrayner/vim-rzip'
  use {'nvim-telescope/telescope.nvim', tag = '0.1.5', requires = { {'nvim-lua/plenary.nvim'} }}
+  use {
+    "nvim-telescope/telescope-file-browser.nvim",
+    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+  }
  use  ('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
- use 'ThePrimeagen/harpoon'
+ use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
+  use {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"} }
+ }
  use 'mbbill/undotree'
  use('neovim/nvim-lspconfig')
  use('jose-elias-alvarez/null-ls.nvim')
@@ -58,6 +70,3 @@ return require('packer').startup(function(use)
   }
 }
 end)
-
-
-
