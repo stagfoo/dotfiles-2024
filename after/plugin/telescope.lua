@@ -5,7 +5,7 @@ local fb_actions = require "telescope._extensions.file_browser.actions"
 -- Key mappings for Telescope
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-vim.keymap.set('n', '<leader>pg', function() 
+vim.keymap.set('n', '<leader>gf', function() 
   builtin.grep_string({ search = vim.fn.input('Grep > ') })
 end)
 

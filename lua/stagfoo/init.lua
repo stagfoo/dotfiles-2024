@@ -44,6 +44,12 @@ return require('packer').startup(function(use)
     requires = { {"nvim-lua/plenary.nvim"} }
  }
  use 'mbbill/undotree'
+use({
+  "WilsonOh/emoji_picker-nvim",
+  config = function()
+    require("emoji_picker").setup()
+  end,
+})
  use('neovim/nvim-lspconfig')
  use('jose-elias-alvarez/null-ls.nvim')
  use {
