@@ -29,9 +29,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   command = "set filetype=groovy",
 })
 
-
-
-
 -- Plugin Manager
 require("lazy").setup({
   'rose-pine/neovim',
@@ -43,7 +40,6 @@ require("lazy").setup({
   },
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
   "nvim-lua/plenary.nvim",
-  
   { 'niqodea/lasso.nvim' },
   {
     "WilsonOh/emoji_picker-nvim",

@@ -1,2 +1,4 @@
 after/.DS_Store
 after/**/.DS_Store
+.DS_Store
+**/.DS_Store
