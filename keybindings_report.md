@@ -55,6 +55,15 @@ These keybindings involve keys from both hands or multiple keys in sequence.
 | `<leader>pf`  | n    | Find project files with Telescope |
 | `<leader>sk`  | n    | Search keymaps with Telescope     |
 
+## Folding
+
+| Key   | Mode | Description        |
+| ----- | ---- | ------------------ |
+| `zo`  | n    | Open fold          |
+| `zc`  | n    | Close fold         |
+| `za`  | n    | Toggle fold        |
+| `%`   | n,v  | Jump to matching bracket |
+
 ## Keyboard Layout
 
 Here is a visual representation of a standard QWERTY keyboard. Keys with an asterisk (`*`) have a direct keybinding or a single-character leader keybinding associated with them.
@@ -67,7 +76,7 @@ Here is a visual representation of a standard QWERTY keyboard. Keys with an aste
 |----------------------------------------------------------------------------------------------------|
 |  Caps   |  a*|  s*|  d*|  f*|  g |  h*|  j*|  k*|  l*| ;: | '" |           Enter          |
 |----------------------------------------------------------------------------------------------------|
-|   Shift   |  z |  x*|  c |  v |  b |  n |  m | ,< | .> | /? |             Shift            |
+|   Shift   |  z*|  x*|  c |  v |  b |  n |  m | ,< | .> | /? |             Shift            |
 |----------------------------------------------------------------------------------------------------|
 | Ctrl | Super | Alt |                        [  Space* ]                       | Alt | Super | Menu | Ctrl |
 +----------------------------------------------------------------------------------------------------+
@@ -86,6 +95,7 @@ Here is a visual representation of a standard QWERTY keyboard. Keys with an aste
 -   **`d`**: (Left Hand) `D`: Move to end of line.
 -   **`f`**: (Left Hand) `<leader>f`: Open file picker (Nnn).
 -   **`x`**: (Left Hand) Remapped to `d` (delete).
+-   **`z`**: (Left Hand) `zo`: Open fold, `zc`: Close fold, `za`: Toggle fold.
 
 -   **`o`**: (Right Hand) Remapped to `O` (new line above).
 -   **`p`**: (Right Hand) `<C-p>`: Find git files.

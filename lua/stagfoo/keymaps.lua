@@ -10,7 +10,7 @@ M.config = {
   reload = '<leader>rc'
 }
 
--- This table seems to be for file-finding and plugins like Telescope/Harpoon
+
 M.searching = {
   find_files = '<leader>ff',
   file_picker = '<leader>pv',
@@ -34,6 +34,8 @@ M.search_actions = {
 M.block_movement = {
   next_paragraph = '}',
   prev_paragraph = '{',
+  next_paragraph_alt = 'S',
+  prev_paragraph_alt = 'W',
   jump_matching_bracket = '%',
 }
 
@@ -42,11 +44,12 @@ M.lsp = {
   quick_fix = '<leader>qf',
   confirm = '<Tab>',
   complete = '<C-Space>',
-  jump = 'J',
+  jump = 'E',
+  hover = 'K',
   type_info = 'I',
   problems = 'L',
-  prev_problems = '[d',
-  next_problems = ']d',
+  next_problems = '[d',
+  prev_problems = ']d',
   code_actions = '<leader>hh',
 }
 
@@ -74,6 +77,12 @@ M.movement = {
   first_non_space_char = '<leader>dd',
   end_of_word = 'f',
   start_of_word = 'F',
+}
+
+M.folding = {
+  open = 'zo',
+  close = 'zc',
+  toggle = 'za',
 }
 
 return M

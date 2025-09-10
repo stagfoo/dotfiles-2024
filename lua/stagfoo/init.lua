@@ -25,7 +25,7 @@ local fileForGroovy = vim.api.nvim_create_augroup("files_for_groovy", { clear = 
 -- Create the autocommand
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   group = fileForGroovy,
-  pattern = "Jenkinsfile",
+  pattern = "Jenkinsfile*",
   command = "set filetype=groovy",
 })
 
@@ -41,12 +41,7 @@ require("lazy").setup({
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
   "nvim-lua/plenary.nvim",
   { 'niqodea/lasso.nvim' },
-  {
-    "WilsonOh/emoji_picker-nvim",
-    config = function()
-      require("emoji_picker").setup()
-    end,
-  },
+  
   {
     'numToStr/Comment.nvim',
     config = function()
@@ -62,8 +57,14 @@ require("lazy").setup({
       })
     end,
   },
+  {
+    'folke/todo-comments.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {}
+  },
 {
   'yetone/avante.nvim', -- Main plugin: avante.nvim
+  build = "make",
   dependencies = {
     -- Dependency 1: The UI library that was missing
     'muniftanjim/nui.nvim',
@@ -90,7 +91,19 @@ require("lazy").setup({
   },
 },
   'neovim/nvim-lspconfig',
-  'nvimtools/none-ls.nvim',
+  {
+    "nvimtools/none-ls.nvim",
+    config = function()
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.prettier.with({
+            filetypes = { "groovy", "yaml" },
+          }),
+        },
+      })
+    end,
+  },
   {
     'akinsho/flutter-tools.nvim',
     dependencies = {

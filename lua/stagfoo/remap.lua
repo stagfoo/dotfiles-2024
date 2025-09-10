@@ -59,10 +59,12 @@ vim.api.nvim_set_keymap('o', keymaps.movement.end_of_line, '$', opts)
 vim.api.nvim_set_keymap('n', keymaps.movement.first_non_space_char, '^', opts)
 
 -- Remap paragraph movement
-vim.api.nvim_set_keymap('n', 'S', '}', opts)
-vim.api.nvim_set_keymap('v', 'S', '}', opts)
-vim.api.nvim_set_keymap('n', 'W', '{', opts)
-vim.api.nvim_set_keymap('v', 'W', '{', opts)
+vim.api.nvim_set_keymap('n', keymaps.block_movement.next_paragraph_alt, '}', opts)
+vim.api.nvim_set_keymap('v', keymaps.block_movement.next_paragraph_alt, '}', opts)
+vim.api.nvim_set_keymap('n', keymaps.block_movement.prev_paragraph_alt, '{', opts)
+vim.api.nvim_set_keymap('v', keymaps.block_movement.prev_paragraph_alt, '{', opts)
+vim.api.nvim_set_keymap('n', keymaps.block_movement.jump_matching_bracket, '%', opts)
+vim.api.nvim_set_keymap('v', keymaps.block_movement.jump_matching_bracket, '%', opts)
 
 -- Remap original 'd' (delete) to 'x'
 vim.api.nvim_set_keymap('n', keymaps.editing.delete, 'd', opts)
@@ -82,17 +84,17 @@ vim.api.nvim_set_keymap('o', keymaps.editing.new_line_under_cursor, 'O', opts)
 -- Custom Commanded
 vim.api.nvim_create_user_command('FormatJSON', ':!jq .', {})
 
+vim.api.nvim_set_keymap('n', '<leader>t', ':tabnew | NnnExplorer<CR>', { noremap = true, silent = true, desc = "Open new tab and file explorer" })
+
 
 local lasso = require('lasso')
-lasso.setup{
-    -- marks_tracker_path = 'custom/path/to/marks/tracker'
-}
+lasso.setup{}
 
 -- Mark current file
 vim.keymap.set('n', vim.g.mapleader..'m', function() lasso.mark_file() end)
 
 -- Go to marks tracker (editable, use `gf` to go to file under cursor)
-vim.keymap.set('n', vim.g.mapleader..'M', function() lasso.open_marks_tracker() end)
+--vim.keymap.set('n', vim.g.mapleader..'M', function() lasso.open_marks_tracker() end)
 
 -- Open lasso marks in telescope
 vim.keymap.set("n", "<S-i>", function() require("stagfoo.telescope_lasso").lasso_picker() end, { desc = "Lasso Telescope" })
@@ -115,3 +117,8 @@ function OpenInTmuxVSplit()
 end
 
 vim.keymap.set('n', '<leader>tf', OpenInTmuxVSplit, { desc = "Open file in tmux vsplit" })
+
+-- Folding
+vim.api.nvim_set_keymap('n', keymaps.folding.open, 'zo', opts)
+vim.api.nvim_set_keymap('n', keymaps.folding.close, 'zc', opts)
+vim.api.nvim_set_keymap('n', keymaps.folding.toggle, 'za', opts)
